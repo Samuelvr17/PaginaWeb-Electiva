@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modelos de Nube</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <header class="bg-primary text-white text-center py-4">
+        <h1>Arquitectura de la Nube</h1>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+                        <li class="nav-item"><a class="nav-link" href="nube.html?tema=privada" id="privada">Nube Privada</a></li>
+                        <li class="nav-item"><a class="nav-link" href="nube.html?tema=publica" id="publica">Nube Pública</a></li>
+                        <li class="nav-item"><a class="nav-link" href="nube.html?tema=hibrida" id="hibrida">Nube Híbrida</a></li>
+                        <li class="nav-item"><a class="nav-link" href="nube.html?tema=comunitaria" id="comunitaria">Nube Comunitaria</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main class="container my-5">
+        <div id="content" class="text-center">
+            <!-- Contenido dinámico aquí -->
+        </div>
+    </main>
+    <footer class="bg-dark text-white text-center py-3">
+        <p>Arquitectura de la Nube</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const tema = params.get('tema');
+        const content = document.getElementById('content');
+
+        const data = {
+            privada: {
+                title: "Nube Privada",
+                description: "Los servicios de la nube no se ofrecen al publico en general. La infraestructura es integramente gestionada por una organizacion"
+            },
+            publica: {
+                title: "Nube Pública",
+                description: "La infraestructura es operada por un proveedor que ofrece servicios al publico en general"
+            },
+            hibrida: {
+                title: "Nube Híbrida",
+                description: "Es el resultado de la combinación de dos o mas nubes individuales que pueden ser a su vez, propias compartidas, o públicas: permite portar datos o aplicaciones entre ellas "
+            },
+            comunitaria: {
+                title: "Nube Comunitaria",
+                description: "Una nube comunitaria (community) es aquella nube que ha sido organizada para servir a una función ◦ propósito común. Puede ser para una organización o varias organizaciones, pero que comparten objetivos comunes como su regulatorios cumplimientos necesidades de seguridad, políticas, misión,(compliances). Una nube de comunidad puede ser administrada por la organización uorganizaciones constituyentes o bien por terceras partes. Este modelo sólo suele ser recogido por el NIST; la mayoría de organizaciones, asociaciones, relacionadas con la nube, dividen los modelos de despliegue en tres: pública, privada e hibrida"
+            }
+        };
+
+        if (data[tema]) {
+            content.innerHTML = `<h2 class="mb-4">${data[tema].title}</h2><p>${data[tema].description}</p>`;
+            document.getElementById(tema).classList.add('active');
+        } else {
+            content.innerHTML = `<h2 class="mb-4">Modelo de Nube No Encontrado</h2><p>El modelo de nube solicitado no existe.</p>`;
+        }
+    </script>
+</body>
+</html>

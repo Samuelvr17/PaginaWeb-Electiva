@@ -1,0 +1,13 @@
+.image-container {
+    text-align: center; /* Centra la imagen dentro del contenedor */
+}
+
+.image-container img {
+    max-width: 500px; /* Ajusta el tamaño máximo de la imagen */
+    height: 200px; /* Ajusta la altura de la imagen */
+    margin: 0 auto; /* Centra la imagen horizontalmente */
+    margin-left: 500px; 
+    margin-top: -110px;
+    display: block; /* Asegura que la imagen se comporte como un bloque para el centrado */
+}
+
